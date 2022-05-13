@@ -6,8 +6,19 @@ import org.example.Controller.Constantes;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-public class RepositorioLibro {
+/*
+*
+*
+*
+*
+* CODIGO DE EJEMPLO
+*
+*
+*
+*
+*
+* */
+public class QuerysSITP2 {
 
     public int InsertarLibro(Libro libro) {
         int afectadas = 0;

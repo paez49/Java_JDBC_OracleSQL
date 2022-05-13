@@ -3,7 +3,7 @@ package org.example.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import org.example.Controller.FacadeOCR;
+import org.example.Controller.FachadaOCR;
 import org.example.Model.Libro;
 
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ public class VistaController {
 
     @FXML
     void botonOprimidol(ActionEvent event) throws SQLException {
-        FacadeOCR rl = new FacadeOCR();
+        FachadaOCR rl = new FachadaOCR();
         List<Libro> libros = rl.ConsultarLibros();
         for (Libro lib : libros) {
             System.out.println("libro:" + lib.toString());
