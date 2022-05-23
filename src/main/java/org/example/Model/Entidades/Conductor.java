@@ -7,47 +7,10 @@ public class Conductor {
     private int codigoLicencia;
     private String tipoLicencia;
     private int Puntaje;
-
-    //Setters y Getters
-
-    int getidConductor() {
-        return idConductor;
-    }
-    void setidConductor(int id) {
-        this.idConductor=id;
-    }
-    int getcedula() {
-        return Cedula;
-    }
-    void setcedula(int numero) {
-        this.Cedula=numero;
-    }
-    String getnombre() {
-        return Nombre;
-    }
-    void setnombre(String nombre) {
-        this.Nombre=nombre;
-    }
-    int getcodigoLicencia() {
-        return codigoLicencia;
-    }
-    void setcodigoLicencia(int codigo) {
-        this.codigoLicencia=codigo;
-    }
-    String gettipoLicencia() {
-        return tipoLicencia;
-    }
-    void settipoLicencia(String tipo) {
-        this.tipoLicencia=tipo;
-    }
-    int getpuntaje() {
-        return Puntaje;
-    }
-    void setpuntaje(int puntaje) {
-        this.Puntaje=puntaje;
-    }
-
     //Constructor
+    public Conductor(){
+
+    }
     public Conductor( int idConductor, int Cedula, String Nombre, int codigoLicencia, String tipoLicencia, int Puntaje) {
         this.Cedula=Cedula;
         this.idConductor=idConductor;
@@ -56,5 +19,40 @@ public class Conductor {
         this.tipoLicencia=tipoLicencia;
         this.Puntaje=Puntaje;
     }
-
+    public int getIdConductor() {
+        return idConductor;
+    }
+    public void setidConductor(int id) {
+        this.idConductor=id;
+    }
+    public int getcedula() {
+        return Cedula;
+    }
+    public void setcedula(int numero) {
+        this.Cedula=numero;
+    }
+    public String getnombre() {
+        return Nombre;
+    }
+    public void setnombre(String nombre) {
+        this.Nombre=nombre;
+    }
+    public int getcodigoLicencia() {
+        return codigoLicencia;
+    }
+    public void setcodigoLicencia(int codigo) {
+        this.codigoLicencia=codigo;
+    }
+    public String gettipoLicencia() {
+        return tipoLicencia;
+    }
+    public void setTipoLicencia(String tipo) {
+        this.tipoLicencia=tipo;
+    }
+    public int getpuntaje() {
+        return Puntaje;
+    }
+    public void setpuntaje(int puntaje) {
+        this.Puntaje=puntaje;
+    }
 }
