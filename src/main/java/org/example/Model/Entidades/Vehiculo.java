@@ -1,4 +1,4 @@
-package Entidades;
+package org.example.Model.Entidades;
 
 public class Vehiculo {
     protected int idVehiculo;

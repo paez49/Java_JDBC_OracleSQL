@@ -1,81 +1,103 @@
 package org.example.Integration;
 
-import org.example.Model.Libro;
 import org.example.Controller.Constantes;
+import org.example.Model.Entidades.Conductor;
+import org.example.Model.Entidades.Vehiculo;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
 
 public class QuerysSITP2 {
-     try
+    // Conexión a Oracle database
+    // private static final String URL =
+    // "jdbc:oracle:thin:@orion.javeriana.edu.co:1521/LAB";
+    // private static final String USERNAME = "user"
+    // private static final String PASSWORD = "pass";
 
-    {
-        connection = DriverManager.getConnection(Constantes.THINCONN,
-                Constantes.USERNAME,
-                Constantes.PASSWORD);
+    private Connection connection; // manages connection
+    private PreparedStatement selectAllConductor;
+    private PreparedStatement selectAllVehiculo;
+    private PreparedStatement selectVehiculoPlaca;
+    private PreparedStatement selectConductorCedula;
+    private PreparedStatement insertNewConductor;
+    private PreparedStatement insertNewVehiculo;
+    private PreparedStatement updateConductor;
+    private PreparedStatement updateVehiculo;
+    private PreparedStatement deleteConductor;
+    private PreparedStatement deleteVehiculo;
 
-        // Selecciona todos los conductores
-        selectAllConductor = connection.prepareStatement(
-                "SELECT * FROM Conductor "
-                        + "ORDER BY IdConductor, Nombre");
+    // constructor
+    public QuerysSITP2() {
+        try {
+            connection = DriverManager.getConnection( Constantes.THINCONN,
+                    Constantes.USERNAME,
+                    Constantes.PASSWORD);
 
-        // Selecciona todos los vehiculos
-        selectAllVehiculo = connection.prepareStatement(
-                "SELECT * FROM Vehiculo "
-                        + "ORDER BY IdVehiculo, Placa");
+            // Selecciona todos los conductores
+            selectAllConductor = connection.prepareStatement(
+                    "SELECT * FROM Conductor "
+                            + "ORDER BY IdConductor, Nombre");
 
-        // Selecciona vehiculos por placa
-        selectVehiculoPlaca = connection.prepareStatement(
-                "SELECT * FROM Vehiculo WHERE Placa LIKE ? " +
-                        "ORDER BY IdVehiculo, Placa");
+            // Selecciona todos los vehiculos
+            selectAllVehiculo = connection.prepareStatement(
+                    "SELECT * FROM Vehiculo "
+                            + "ORDER BY IdVehiculo, Placa");
 
-        // Selecciona conductores por cedula
-        selectConductorCedula = connection.prepareStatement(
-                "SELECT * FROM Conductor WHERE Cedula LIKE ? " +
-                        "ORDER BY IdConductor, Nombre");
+            // Selecciona vehiculos por placa
+            selectVehiculoPlaca = connection.prepareStatement(
+                    "SELECT * FROM Vehiculo WHERE Placa LIKE ? " +
+                            "ORDER BY IdVehiculo, Placa");
 
-        // insertar nuevo conductor
-        insertNewConductor = connection.prepareStatement(
-                "INSERT INTO Conductor " +
-                        "(IdConductor,Cedula ,Nombre,codigoLicencia,tipoLicencia,puntaje) " +
-                        "VALUES (?, ?, ?, ?, ?, ?)");
+            // Selecciona conductores por cedula
+            selectConductorCedula = connection.prepareStatement(
+                    "SELECT * FROM Conductor WHERE Cedula LIKE ? " +
+                            "ORDER BY IdConductor, Nombre");
 
-        // insertar nuevo vehiculo
-        insertNewVehiculo = connection.prepareStatement(
-                "INSERT INTO Vehiculo " +
-                        "(IdVehiculo,IdConductor ,Placa,Tipo,codigoSoat) " +
-                        "VALUES (?, ?, ?, ?, ?)");
+            // insertar nuevo conductor
+            insertNewConductor = connection.prepareStatement(
+                    "INSERT INTO Conductor " +
+                            "(IdConductor,Cedula ,Nombre,codigoLicencia,tipoLicencia,puntaje) " +
+                            "VALUES (?, ?, ?, ?, ?, ?)");
 
-        // actualizar conductor
-        updateConductor = connection.prepareStatement(
-                "UPDATE Conductor " +
-                        "SET IdConductor = ?, Cedula = ?, Nombre = ?, codigoLicencia = ? , tipoLicencia = ?, puntaje = ? "
-                        +
-                        "WHERE IdConductor = ?");
+            // insertar nuevo vehiculo
+            insertNewVehiculo = connection.prepareStatement(
+                    "INSERT INTO Vehiculo " +
+                            "(IdVehiculo,IdConductor ,Placa,Tipo,codigoSoat) " +
+                            "VALUES (?, ?, ?, ?, ?)");
 
-        // actualizar vehiculo
-        updateVehiculo = connection.prepareStatement(
-                "UPDATE Vehiculo " +
-                        "SET IdVehiculo = ?, IdConductor = ?, Placa = ?, Tipo = ? , codigoSoat = ? " +
-                        "WHERE IdVehiculo = ?");
+            // actualizar conductor
+            updateConductor = connection.prepareStatement(
+                    "UPDATE Conductor " +
+                            "SET IdConductor = ?, Cedula = ?, Nombre = ?, codigoLicencia = ? , tipoLicencia = ?, puntaje = ? "
+                            +
+                            "WHERE IdConductor = ?");
 
-        // eliminar conductor
-        deleteConductor = connection.prepareStatement(
-                "DELETE FROM Conductor WHERE IdConductor = ?");
+            // actualizar vehiculo
+            updateVehiculo = connection.prepareStatement(
+                    "UPDATE Vehiculo " +
+                            "SET IdVehiculo = ?, IdConductor = ?, Placa = ?, Tipo = ? , codigoSoat = ? " +
+                            "WHERE IdVehiculo = ?");
 
-        // eliminar vehiculo
-        deleteVehiculo = connection.prepareStatement(
-                "DELETE FROM Vehiculo WHERE IdVehiculo = ?");
+            // eliminar conductor
+            deleteConductor = connection.prepareStatement(
+                    "DELETE FROM Conductor WHERE IdConductor = ?");
 
-    } catch(
-    SQLException sqlException)
+            // eliminar vehiculo
+            deleteVehiculo = connection.prepareStatement(
+                    "DELETE FROM Vehiculo WHERE IdVehiculo = ?");
 
-    {
-        sqlException.printStackTrace();
-        System.exit(1);
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            System.exit(1);
+        }
     }
 
+    // selecciona todos los conductores
     public List<Conductor> getAllConductor() {
         // executeQuery returns ResultSet containing matching entries
         try (ResultSet resultSet = selectAllConductor.executeQuery()) {
@@ -99,6 +121,7 @@ public class QuerysSITP2 {
         return null;
     }
 
+    // selecciona todos los vehiculos
     public List<Vehiculo> getAllVehiculo() {
         // executeQuery returns ResultSet containing matching entries
         try (ResultSet resultSet = selectAllVehiculo.executeQuery()) {
@@ -110,7 +133,7 @@ public class QuerysSITP2 {
                         resultSet.getInt("IdConductor"),
                         resultSet.getString("Placa"),
                         resultSet.getBoolean("Tipo"),
-                        resultSet.getString("codigoSoat")));
+                        resultSet.getInt("codigoSoat")));
             }
 
             return results;
@@ -121,31 +144,7 @@ public class QuerysSITP2 {
         return null;
     }
 
-    public int InsertarConductor(Conductor conductor) {
-        int afectadas = 0;
-        String SQL = "INSERT INTO Conductor \" +\n" +
-                "\"(IdConductor,Cedula ,Nombre,codigoLicencia,tipoLicencia,puntaje) \" +\n" +
-                "\"VALUES (?, ?, ?, ?, ?, ?)";
-        try (
-                Connection conex = DriverManager.getConnection(
-                        Constantes.THINCONN,
-                        Constantes.USERNAME,
-                        Constantes.PASSWORD);
-                PreparedStatement ps = conex.prepareStatement(SQL);) {
-
-            ps.setString(1, libro.getIsbn());
-            ps.setString(2, libro.getTitle());
-            ps.setString(3, libro.getLastName());
-            ps.setString(4, libro.getFirstName());
-            ps.setBigDecimal(5, libro.getRating());
-            afectadas = ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Error de conexion:" + ex.toString());
-            ex.printStackTrace();
-        }
-        return afectadas;
-    }
-
+    // selecciona Conductor por cedula
     public List<Conductor> getConductorCedula(String Cedula) {
         try {
             selectConductorCedula.setString(2, Cedula); // set Cedula
@@ -175,6 +174,7 @@ public class QuerysSITP2 {
         }
     }
 
+    // selecciona vehiculo por placa
     public List<Vehiculo> getVehiculoPlaca(String Placa) {
         try {
             selectVehiculoPlaca.setString(3, Placa); // set Placa
@@ -193,7 +193,7 @@ public class QuerysSITP2 {
                         resultSet.getInt("IdConductor"),
                         resultSet.getString("Placa"),
                         resultSet.getBoolean("Tipo"),
-                        resultSet.getString("codigoSoat")));
+                        resultSet.getInt("codigoSoat")));
             }
 
             return results;
@@ -203,6 +203,7 @@ public class QuerysSITP2 {
         }
     }
 
+    // Crear Conductor
     public int InsertarConductor(int IdConductor, int Cedula, String Nombre, int codigoLicencia, String tipoLicencia,
                                  int puntaje) {
 
