@@ -17,13 +17,9 @@ public class VistaController {
     @FXML
     void botonOprimidol(ActionEvent event) throws SQLException {
         FachadaOCR rl = new FachadaOCR();
-        List<Libro> libros = rl.ConsultarLibros();
-        for (Libro lib : libros) {
-            System.out.println("libro:" + lib.toString());
-        }
-        libros = rl.ConsultarLibrosPorAutor("e", 1);
-        for (Libro lib : libros) {
-            System.out.println("libro:" + lib.toString());
+        List<Conductor> conductorList = rl.getAllConductor();
+        for (Conductor conduc : conductorList) {
+            System.out.println("Conductor:" + conduc.toString());
         }
     }
 
