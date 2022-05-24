@@ -4,20 +4,6 @@ public class Taxi extends Vehiculo{
     private int modelo;
     private String tipoCarro;
 
-    //Setters y Getters
-
-    int getmodelo() {
-        return modelo;
-    }
-    void setmodelo(int modelo) {
-        this.modelo=modelo;
-    }
-    String gettipocar() {
-        return tipoCarro;
-    }
-    void settipo(String tipo) {
-        this.tipoCarro=tipo;
-    }
     //Constructor
     public Taxi (int modelo, String tipoCarro, int idVehiculo, int idConductor, String Placa, boolean Tipo, int codigoSoat) {
         // TODO Auto-generated constructor stub
@@ -25,4 +11,21 @@ public class Taxi extends Vehiculo{
         this.modelo = modelo;
         this.tipoCarro = tipoCarro;
     }
+
+    //Setters y Getters
+
+        public int setModelo() {
+            return modelo;
+        }
+        public void setModelo(int modelo) {
+            this.modelo=modelo;
+        }
+
+        public String getTipoCar() {
+            return tipoCarro;
+        }
+        public void setTipoCar(String tipo) {
+            this.tipoCarro=tipo;
+        }
 }
+
