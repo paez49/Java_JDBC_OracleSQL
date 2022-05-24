@@ -1,4 +1,4 @@
-package org.example.Model.Entidades;
+package Entidades;
 
 public class BiciTaxi extends Vehiculo{
     private int rinCicla;
