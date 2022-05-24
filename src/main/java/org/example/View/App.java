@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Objects;
 
 /**
  * Hello world!
@@ -18,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root =
-                FXMLLoader.load(getClass().getResource("Vista.fxml"));
+                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Admin.fxml")));
 
         Scene scene = new Scene(root);
         stage.setTitle("Employee Database");
