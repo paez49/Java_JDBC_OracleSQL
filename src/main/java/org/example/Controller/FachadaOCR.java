@@ -1,20 +1,14 @@
 package org.example.Controller;
 
 import org.example.Integration.QuerysSITP2;
-import org.example.Model.Libro;
+import org.example.Model.Entidades.*;
 
 import java.util.List;
 
 public class FachadaOCR {
+    public List<Conductor> ConsultarConductores() {
+        QuerysSITP2 querysSITP2 = new QuerysSITP2();
+        return querysSITP2.getAllConductor();
 
-    public List<Libro> ConsultarLibrosPorAutor(String p_author, int p_rating) {
-        QuerysSITP2 repo = new QuerysSITP2();
-        return repo.ConsultarLibrosPorAutor(p_author, p_rating);
-    }
-
-
-    public List<Libro> ConsultarLibros() {
-        QuerysSITP2 repo = new QuerysSITP2();
-        return repo.ConsultarLibros();
     }
 }
