@@ -1,16 +1,8 @@
+
 package org.example.Model.Entidades;
 
 public class BiciTaxi extends Vehiculo{
     private int rinCicla;
-
-    //Setters y Getters
-
-    int getrin() {
-        return rinCicla;
-    }
-    void setrin(int rin) {
-        this.rinCicla=rin;
-    }
 
     //Constructor
     public BiciTaxi (int rinCicla, int idVehiculo, int idConductor, String Placa, boolean Tipo, int codigoSoat) {
@@ -18,4 +10,12 @@ public class BiciTaxi extends Vehiculo{
         super(idVehiculo, idConductor, Placa, Tipo, codigoSoat);
         this.rinCicla = rinCicla;
     }
+    //Setters y Getters
+    
+        public int getRin() {
+            return rinCicla;
+        }
+        public void setRin(int rin) {
+            this.rinCicla=rin;
+        }
 }
