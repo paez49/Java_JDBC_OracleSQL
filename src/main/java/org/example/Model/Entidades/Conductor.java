@@ -19,40 +19,41 @@ public class Conductor {
         this.tipoLicencia=tipoLicencia;
         this.Puntaje=Puntaje;
     }
-    public int getIdConductor() {
-        return idConductor;
+    // Setters Y Getters
+        public int getIdConductor() {
+            return idConductor;
     }
-    public void setidConductor(int id) {
-        this.idConductor=id;
+        public void setIdConductor(int id) {
+            this.idConductor=id;
     }
-    public int getcedula() {
-        return Cedula;
+        public int getCedula() {
+            return Cedula;
     }
-    public void setcedula(int numero) {
-        this.Cedula=numero;
+        public void setCedula(int numero) {
+            this.Cedula=numero;
     }
-    public String getnombre() {
-        return Nombre;
+        public String getNombre() {
+            return Nombre;
     }
-    public void setnombre(String nombre) {
-        this.Nombre=nombre;
+        public void setNombre(String nombre) {
+            this.Nombre=nombre;
     }
-    public int getcodigoLicencia() {
+        public int getCodigoLicencia() {
         return codigoLicencia;
     }
-    public void setcodigoLicencia(int codigo) {
+        public void setCodigoLicencia(int codigo) {
         this.codigoLicencia=codigo;
     }
-    public String gettipoLicencia() {
+        public String getTipoLicencia() {
         return tipoLicencia;
     }
-    public void setTipoLicencia(String tipo) {
+        public void setTipoLicencia(String tipo) {
         this.tipoLicencia=tipo;
     }
-    public int getpuntaje() {
+        public int getPuntaje() {
         return Puntaje;
     }
-    public void setpuntaje(int puntaje) {
+        public void setPuntaje(int puntaje) {
         this.Puntaje=puntaje;
     }
 }
