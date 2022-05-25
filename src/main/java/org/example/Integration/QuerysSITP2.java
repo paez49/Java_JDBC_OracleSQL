@@ -73,14 +73,14 @@ public class QuerysSITP2 {
             // actualizar conductor
             updateConductor = connection.prepareStatement(
                     "UPDATE Conductor " +
-                            "SET IdConductor = ?, Cedula = ?, Nombre = ?, codigoLicencia = ? , tipoLicencia = ?, puntaje = ? "
+                            "SET Cedula = ?, Nombre = ?, codigoLicencia = ? , tipoLicencia = ?, puntaje = ? "
                             +
                             "WHERE IdConductor = ?");
 
             // actualizar vehiculo
             updateVehiculo = connection.prepareStatement(
                     "UPDATE Vehiculo " +
-                            "SET IdVehiculo = ?, IdConductor = ?, Placa = ?, Tipo = ? , codigoSoat = ? " +
+                            "SET IdConductor = ?, Placa = ?, Tipo = ? , codigoSoat = ? " +
                             "WHERE IdVehiculo = ?");
 
             // eliminar conductor
@@ -247,12 +247,14 @@ public class QuerysSITP2 {
     public int ModificarConductor(int IdConductor, int Cedula, String Nombre, int codigoLicencia, String tipoLicencia,
                                   int puntaje) {
         try {
-            updateConductor.setInt(1, IdConductor);
-            updateConductor.setInt(2, Cedula);
-            updateConductor.setString(3, Nombre);
-            updateConductor.setInt(4, codigoLicencia);
-            updateConductor.setString(5, tipoLicencia);
-            updateConductor.setInt(6, puntaje);
+            
+            updateConductor.setInt(1, Cedula);
+            updateConductor.setString(2, Nombre);
+            updateConductor.setInt(3, codigoLicencia);
+            updateConductor.setString(4, tipoLicencia);
+            updateConductor.setInt(5, puntaje);
+            updateConductor.setInt(6, IdConductor);
+
 
             return updateConductor.executeUpdate();
         } catch (SQLException e) {
@@ -264,11 +266,11 @@ public class QuerysSITP2 {
     // Modificar Vehiculo
     public int ModificarVehiculo(int IdVehiculo, int IdConductor, String Placa, boolean Tipo, int codigoSoat) {
         try {
-            updateVehiculo.setInt(1, IdVehiculo);
-            updateVehiculo.setInt(2, IdConductor);
-            updateVehiculo.setString(3, Placa);
-            updateVehiculo.setBoolean(4, Tipo);
-            updateVehiculo.setInt(5, codigoSoat);
+            updateVehiculo.setInt(1, IdConductor);
+            updateVehiculo.setString(2, Placa);
+            updateVehiculo.setBoolean(3, Tipo);
+            updateVehiculo.setInt(4, codigoSoat);
+            updateVehiculo.setInt(5, IdVehiculo);
 
             return updateVehiculo.executeUpdate();
         } catch (SQLException e) {
