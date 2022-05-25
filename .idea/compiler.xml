@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Proyecto SITP 2" />
         <module name="Projecto SITP-2" />
+        <module name="Proyecto_SITP_2" />
       </profile>
     </annotationProcessing>
   </component>
