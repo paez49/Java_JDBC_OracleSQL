@@ -7,39 +7,6 @@ public class Vehiculo {
     protected boolean Tipo;
     protected int codigoSoat;
 
-    //Setters y Getters
-
-    int getidVehiculo() {
-        return idVehiculo;
-    }
-    void setidVehiculo (int id) {
-        this.idVehiculo=id;
-    }
-    int getidConductor() {
-        return idConductor;
-    }
-    void setidConductor (int id) {
-        this.idConductor=id;
-    }
-    String getPlaca() {
-        return Placa;
-    }
-    void setPlaca (String placa) {
-        this.Placa=placa;
-    }
-    boolean gettipo() {
-        return Tipo;
-    }
-    void settipo (boolean tipo) {
-        this.Tipo=tipo;
-    }
-    int getcodigoSoat() {
-        return codigoSoat;
-    }
-    void setcodigoSoat (int codigo) {
-        this.codigoSoat=codigo;
-    }
-
     //Constructor
     public Vehiculo(int idVehiculo, int idConductor, String Placa, boolean Tipo, int codigoSoat) {
         this.idVehiculo=idVehiculo;
@@ -49,6 +16,40 @@ public class Vehiculo {
         this.codigoSoat=codigoSoat;
     }
 
+    //Setters y Getters
 
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+    public void setIdVehiculo (int id) {
+        this.idVehiculo=id;
+    }
 
+    public int getIdConductor() {
+        return idConductor;
+    }
+    public void setIdConductor (int id) {
+        this.idConductor=id;
+    }
+
+    public String getPlaca() {
+        return Placa;
+    }
+    public void setPlaca (String placa) {
+        this.Placa=placa;
+    }
+
+    public boolean getTipo() {
+        return Tipo;
+    }
+    public void setTipo (boolean tipo) {
+        this.Tipo=tipo;
+    }
+
+    public int getCodigoSoat() {
+        return codigoSoat;
+    }
+    public void setCodigoSoat (int codigo) {
+        this.codigoSoat=codigo;
+    }
 }
