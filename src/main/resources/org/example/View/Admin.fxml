@@ -70,12 +70,12 @@
                                                                             <Font size="14.0" />
                                                                         </font>
                                                                     </Label>
-                                                                    <TextField fx:id="TaxiModeloVehiculo" prefHeight="25.0" prefWidth="297.0" GridPane.columnIndex="1">
+                                                                    <TextField fx:id="txtModeloV" prefHeight="25.0" prefWidth="297.0" GridPane.columnIndex="1">
                                                                         <GridPane.margin>
                                                                             <Insets left="5.0" right="200.0" />
                                                                         </GridPane.margin>
                                                                     </TextField>
-                                                                    <TextField fx:id="TaxiTipoCarroTexField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                    <TextField fx:id="txtTipoCarro" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                         <GridPane.margin>
                                                                             <Insets left="5.0" right="150.0" />
                                                                         </GridPane.margin>
@@ -186,17 +186,17 @@
                                                 <Font size="14.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="IDVehiculoTextFiel" GridPane.columnIndex="1">
+                                        <TextField fx:id="txtIDV" GridPane.columnIndex="1">
                                             <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField fx:id="PlacaTextField" prefHeight="25.0" prefWidth="346.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                        <TextField fx:id="txtPlaca" prefHeight="25.0" prefWidth="346.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField fx:id="CodigoSoatTextField" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                        <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                             <GridPane.margin>
                                                 <Insets left="5.0" right="40.0" />
                                             </GridPane.margin>
@@ -274,42 +274,42 @@
                                                 <Insets left="100.0" />
                                             </GridPane.margin>
                                         </Label>
-                                        <TextField GridPane.columnIndex="1">
+                                        <TextField fx:id="txtIDC" GridPane.columnIndex="1">
                                             <GridPane.margin>
                                                 <Insets right="100.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                        <TextField fx:id="txtCedula" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                             <GridPane.margin>
                                                 <Insets right="160.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                        <TextField fx:id="txtCodigoLicencia" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                             <GridPane.margin>
                                                 <Insets right="50.0" />
                                             </GridPane.margin>
                                         </TextField>
-                                        <Button fx:id="Buttom_Ingr" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Ingresar" GridPane.rowIndex="5">
+                                        <Button fx:id="Buttom_Ingr" mnemonicParsing="false" onAction="#agregarConductor" prefHeight="25.0" prefWidth="80.0" text="Ingresar" GridPane.rowIndex="5">
                                             <GridPane.margin>
                                                 <Insets left="50.0" />
                                             </GridPane.margin>
                                         </Button>
-                                        <Button fx:id="Buttom_modif" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Modificar" GridPane.rowIndex="5">
+                                        <Button fx:id="Buttom_modif" mnemonicParsing="false" onAction="#modificarConductor" prefHeight="25.0" prefWidth="80.0" text="Modificar" GridPane.rowIndex="5">
                                             <GridPane.margin>
                                                 <Insets left="200.0" />
                                             </GridPane.margin>
                                         </Button>
-                                        <Button fx:id="Button_elim" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                        <Button fx:id="Button_elim" mnemonicParsing="false" onAction="#eliminarConductor" prefHeight="25.0" prefWidth="80.0" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                             <GridPane.margin>
                                                 <Insets left="35.0" />
                                             </GridPane.margin>
                                         </Button>
-                                        <Button fx:id="Button_cons" mnemonicParsing="false" onAction="#queryPressed" prefHeight="25.0" prefWidth="80.0" text="Consultar" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                        <Button fx:id="Button_cons" mnemonicParsing="false" onAction="#consultarCondcutor" prefHeight="25.0" prefWidth="80.0" text="Consultar" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                             <GridPane.margin>
                                                 <Insets left="170.0" />
                                             </GridPane.margin>
