@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.VistaController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TabPane layoutY="-1.0" prefHeight="374.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                  <Tab text="Buscar por cedula">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="txtCedula" layoutX="237.0" layoutY="129.0" onAction="#fieldCedula" />
+                              <Button fx:id="btnQueryConduc" layoutX="249.0" layoutY="198.0" mnemonicParsing="false" onAction="#pressedQueryConduc" text="Consultar conductor" />
+                              <Label layoutX="234.0" layoutY="78.0" text="Ingrese cedula del conductor" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                <Tab fx:id="registro_usuario" text="Registro conductor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="640.0">
+                           <children>
+                              <Button fx:id="Regresar" layoutX="201.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="77.0" text="Regresar" />
+                              <Label fx:id="lblID" layoutX="41.0" layoutY="22.0" text="ID:" />
+                              <Label fx:id="label_ID" layoutX="81.0" layoutY="22.0" prefHeight="18.0" prefWidth="132.0" />
+                              <Label fx:id="lblCedula" layoutX="41.0" layoutY="79.0" text="Cedula:" />
+                              <Label fx:id="label_CC" layoutX="85.0" layoutY="78.0" prefHeight="18.0" prefWidth="123.0" />
+                              <Label fx:id="lblCodigo" layoutX="39.0" layoutY="107.0" text="Codigo de licencia:" />
+                              <Label fx:id="label_codigo_L" layoutX="165.0" layoutY="106.0" prefHeight="18.0" prefWidth="94.0" />
+                              <Label fx:id="lblTipoLicencia" layoutX="39.0" layoutY="140.0" text="Tipo de licencia:" />
+                              <Label fx:id="label_tipo_Li" layoutX="141.0" layoutY="139.0" prefHeight="18.0" prefWidth="105.0" />
+                              <Label layoutX="40.0" layoutY="164.0" text="Comentarios:" />
+                              <Button fx:id="mostrar" layoutX="369.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonAction4" text="Mostrar" />
+                              <Label layoutX="457.0" layoutY="31.0" text="Puntaje:" />
+                              <Label fx:id="LabelPuntaje" layoutX="457.0" layoutY="65.0" prefHeight="84.0" prefWidth="125.0" textAlignment="JUSTIFY">
+                                 <font>
+                                    <Font size="47.0" />
+                                 </font>
+                              </Label>
+                              <ListView fx:id="ListCom" layoutX="40.0" layoutY="193.0" prefHeight="91.0" prefWidth="542.0" />
+                              <Label fx:id="lblNombre" layoutX="37.0" layoutY="49.0" text="Nombre:" />
+                              <Label fx:id="Label_nombre" layoutX="103.0" layoutY="49.0" prefHeight="18.0" prefWidth="182.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="calificar_conductor" text="Calificar conductor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="216.0" prefWidth="640.0">
+                           <children>
+                              <Label layoutX="129.0" layoutY="50.0" text="Seleccione una calificacion:" />
+                              <CheckBox fx:id="one" layoutX="128.0" layoutY="122.0" mnemonicParsing="false" text="1" />
+                              <CheckBox fx:id="two" layoutX="175.0" layoutY="122.0" mnemonicParsing="false" text="2" />
+                              <CheckBox fx:id="tree" layoutX="224.0" layoutY="122.0" mnemonicParsing="false" text="3" />
+                              <CheckBox fx:id="four" layoutX="272.0" layoutY="122.0" mnemonicParsing="false" text="4" />
+                              <CheckBox fx:id="five" layoutX="320.0" layoutY="122.0" mnemonicParsing="false" text="5" />
+                              <Button fx:id="enviar1" layoutX="190.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleButtonAction2" text="Calificar" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="escribir_comentario" text="Escribir comentario">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="216.0" prefWidth="640.0">
+                           <children>
+                              <TextArea fx:id="cuadro_comentario" layoutX="35.0" layoutY="57.0" prefHeight="214.0" prefWidth="562.0" />
+                              <Label layoutX="35.0" layoutY="24.0" text="Escriba su comentario:" />
+                              <Button fx:id="enviar2" layoutX="284.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleButtonAction3" text="Enviar" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

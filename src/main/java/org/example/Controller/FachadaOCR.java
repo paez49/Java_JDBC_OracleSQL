@@ -11,4 +11,9 @@ public class FachadaOCR {
         return querysSITP2.getAllConductor();
 
     }
+    public List<Conductor>  consultarConductorXCedula(int cedula){
+
+        QuerysSITP2 querysSITP2 = new QuerysSITP2();
+        return querysSITP2.getConductorCedula(cedula);
+    }
 }

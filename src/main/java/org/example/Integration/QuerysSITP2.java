@@ -55,7 +55,7 @@ public class QuerysSITP2 {
 
             // Selecciona conductores por cedula
             selectConductorCedula = connection.prepareStatement(
-                    "SELECT * FROM Conductor WHERE Cedula LIKE ? " +
+                    "SELECT * FROM Conductor WHERE Cedula = ? " +
                             "ORDER BY IdConductor, Nombre");
 
             // insertar nuevo conductor
@@ -145,18 +145,17 @@ public class QuerysSITP2 {
     }
 
     // selecciona Conductor por cedula
-    public List<Conductor> getConductorCedula(String Cedula) {
+    public List<Conductor> getConductorCedula(int Cedula) {
+
         try {
-            selectConductorCedula.setString(2, Cedula); // set Cedula
+            selectConductorCedula.setInt(1, Cedula); // set Cedula
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             return null;
         }
-
         // executeQuery returns ResultSet containing matching entries
         try (ResultSet resultSet = selectConductorCedula.executeQuery()) {
             List<Conductor> results = new ArrayList<Conductor>();
-
             while (resultSet.next()) {
                 results.add(new Conductor(
                         resultSet.getInt("IdConductor"),
@@ -165,8 +164,9 @@ public class QuerysSITP2 {
                         resultSet.getInt("codigoLicencia"),
                         resultSet.getString("tipoLicencia"),
                         resultSet.getInt("puntaje")));
-            }
 
+            }
+            System.out.println(results.get(0).getCedula());
             return results;
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
