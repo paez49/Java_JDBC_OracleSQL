@@ -204,7 +204,7 @@
                                                 <Insets bottom="10.0" left="45.0" />
                                             </GridPane.margin>
                                         </Button>
-                                        <Button fx:id="Tab_consul" mnemonicParsing="false" text="Consultar" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                        <Button fx:id="Tab_consul" mnemonicParsing="false" onAction="#consulVehiculoPressed" text="Consultar" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                             <GridPane.margin>
                                                 <Insets bottom="10.0" left="250.0" />
                                             </GridPane.margin>
