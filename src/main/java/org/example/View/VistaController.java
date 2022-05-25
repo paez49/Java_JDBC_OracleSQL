@@ -2,16 +2,11 @@ package org.example.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-import org.example.Controller.FachadaOCR;
-import org.example.Model.Entidades.Conductor;
-
-import java.io.IOException;
-import java.util.List;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 
 public class VistaController {
 
@@ -22,22 +17,55 @@ public class VistaController {
     private Tab Tab_Taxi;
 
     @FXML
+    private TextField TaxiModeloVehiculo;
+
+    @FXML
+    private TextField TaxiTipoCarroTexField;
+
+    @FXML
     private Tab Tab_Bicitaxi;
+
+    @FXML
+    private TextField RinBicicletaTextField;
 
     @FXML
     private Tab Tab_Bus;
 
     @FXML
-    private Button Tab_agre;
+    private RadioButton trasmilenioSelected;
 
     @FXML
-    private Button Tab_consul;
+    private RadioButton zonalSelected;
 
     @FXML
-    private Button Tab_modif;
+    private RadioButton alimentadorSelected;
 
     @FXML
-    private Button Tab_elimi;
+    private TextField IDVehiculoTextFiel;
+
+    @FXML
+    private TextField PlacaTextField;
+
+    @FXML
+    private TextField CodigoSoatTextField;
+
+    @FXML
+    private Button ButtomAgregar;
+
+    @FXML
+    private Button Buttom_Limpiar;
+
+    @FXML
+    private Button Buttom_Modificar;
+
+    @FXML
+    private Button Buttom_Eliminar;
+
+    @FXML
+    private RadioButton motorizadoSelected;
+
+    @FXML
+    private RadioButton noMotorizadoSelected;
 
     @FXML
     private Tab Tab_Conductor;
@@ -53,98 +81,26 @@ public class VistaController {
 
     @FXML
     private Button Button_cons;
-    @FXML
-    private TextField txtCedula;
 
     @FXML
-    private Button btnQueryConduc;
+    private ListView<?> ListViewConductor;
 
     @FXML
-    private Tab registro_usuario;
+    private RadioButton b3Selected;
 
     @FXML
-    private Button Regresar;
+    private RadioButton c1Selected;
 
     @FXML
-    private Label label_ID;
+    private RadioButton c2Selected;
 
     @FXML
-    private Label label_CC;
-
-    @FXML
-    private Label label_codigo_L;
-
-    @FXML
-    private Label label_tipo_Li;
-
-    @FXML
-    private Button mostrar;
-
-    @FXML
-    private Label LabelPuntaje;
-
-    @FXML
-    private ListView<?> ListCom;
-
-    @FXML
-    private Label Label_nombre;
-
-    @FXML
-    private Tab calificar_conductor;
-
-    @FXML
-    private CheckBox one;
-
-    @FXML
-    private CheckBox two;
-
-    @FXML
-    private CheckBox tree;
-
-    @FXML
-    private CheckBox four;
-
-    @FXML
-    private CheckBox five;
-
-    @FXML
-    private Button enviar1;
-
-    @FXML
-    private Tab escribir_comentario;
-
-    @FXML
-    private TextArea cuadro_comentario;
-
-    @FXML
-    private Button enviar2;
-    @FXML
-    private Label lblID;
-    @FXML
-    private Label lblCedula;
-    @FXML
-    private Label lblCodigo;
-    @FXML
-    private Label lblTipoLicencia;
-    @FXML
-    private Label lblNombre;
-    @FXML
-    void fieldCedula(ActionEvent event) {
+    void AgregarVehiculo(ActionEvent event) {
 
     }
 
     @FXML
-    void handleButtonAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleButtonAction2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleButtonAction3(ActionEvent event) {
+    void CleanVehiculo(ActionEvent event) {
 
     }
 
@@ -153,43 +109,18 @@ public class VistaController {
 
 
     @FXML
-    void handleButtonAction4(ActionEvent event) {
+    void EliminarVehiculo(ActionEvent event) {
 
     }
 
     @FXML
-    void consulVehiculoPressed(ActionEvent event) {
+    void ModificarVehiculo(ActionEvent event) {
 
     }
 
     @FXML
     void queryPressed(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("interfazUsuario.fxml"));
-            Parent root = loader.load();
-            VistaController controlador = loader.getController();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Bienvenido");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        }
-    @FXML
-    void pressedQueryConduc(ActionEvent event) {
-    int cedulaBuscar = Integer.parseInt(txtCedula.getText());
-
-    FachadaOCR rl = new FachadaOCR();
-       // List<Conductor> conductorList = rl.ConsultarConductores();
-       List<Conductor> conductorList = rl.consultarConductorXCedula(cedulaBuscar);
-       lblID.setText("ID: "+conductorList.get(0).getIdConductor());
-       lblCedula.setText("Cedula: "+conductorList.get(0).getCedula());
-       lblCodigo.setText("Codigo licencia: "+conductorList.get(0).getCodigoLicencia());
-       lblNombre.setText("Nombre: "+conductorList.get(0).getNombre());
-       lblTipoLicencia.setText("Tipo licencia: "+conductorList.get(0).getTipoLicencia());
-        System.out.println("Conductor" + conductorList.get(0).getNombre());
-
+        System.out.println(c1Selected.getText());
     }
+
 }
