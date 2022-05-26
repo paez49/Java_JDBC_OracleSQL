@@ -22,7 +22,7 @@ public class App extends Application {
                 FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Admin.fxml")));
 
         Scene scene = new Scene(root);
-        stage.setTitle("Employee Database");
+        stage.setTitle("Sistema Integrado de Transporte Público 2");
         stage.setScene(scene);
         stage.show();
     }

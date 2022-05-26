@@ -9,7 +9,7 @@ import org.example.Model.Entidades.Conductor;
 import java.util.List;
 
 public class VistaController {
-
+    FachadaOCR fco = new FachadaOCR();
     @FXML
     private Tab Tab_vehiculo;
 
@@ -59,13 +59,19 @@ public class VistaController {
     private Button Buttom_Modificar;
 
     @FXML
-    private Button Buttom_Eliminar;
+    private Button btnConsultar;
 
     @FXML
     private RadioButton motorizadoSelected;
 
     @FXML
     private RadioButton noMotorizadoSelected;
+
+    @FXML
+    private TextArea txtView;
+
+    @FXML
+    private Label lblView;
 
     @FXML
     private Tab Tab_Conductor;
@@ -84,8 +90,6 @@ public class VistaController {
 
     @FXML
     private Button Buttom_Ingr;
-    @FXML
-    private TextArea txtConsulta;
 
     @FXML
     private Button Buttom_modif;
@@ -94,16 +98,7 @@ public class VistaController {
     private Button Button_elim;
 
     @FXML
-    private Label txtCanti;
-
-    @FXML
-    private Label txtPromedio;
-
-    @FXML
     private Button Button_cons;
-
-    @FXML
-    private ListView<Conductor> ListViewConductor;
 
     @FXML
     private RadioButton b3Selected;
@@ -113,6 +108,18 @@ public class VistaController {
 
     @FXML
     private RadioButton c2Selected;
+
+    @FXML
+    private TextArea txtConsulta;
+
+    @FXML
+    private Label txtCanti;
+
+    @FXML
+    private Label txtPromedio;
+
+
+
 
     @FXML
     void AgregarVehiculo(ActionEvent event) {
@@ -138,7 +145,6 @@ public class VistaController {
     void agregarConductor(ActionEvent event) {
         String auxLicencia ="No licencia";
 
-        FachadaOCR fco = new FachadaOCR();
         if(c1Selected.isSelected()){
             auxLicencia = "C1";
         }else if(c2Selected.isSelected()){
@@ -162,7 +168,6 @@ public class VistaController {
     @FXML
     void consultarCondcutor(ActionEvent event) {
         int suma=0;
-        FachadaOCR fco = new FachadaOCR();
         String txtMostrar = "";
         List<Conductor> listaConsultaC = fco.ConsultarConductores();
         for(Conductor condu : listaConsultaC){
@@ -180,13 +185,41 @@ public class VistaController {
 
     @FXML
     void eliminarConductor(ActionEvent event) {
-        FachadaOCR fco = new FachadaOCR();
-        fco.eliminarConductor(Integer.parseInt(txtIDC.getText()));
+        fco.eliminarConductor(
+                Integer.parseInt(txtIDC.getText())
+
+        );
+        System.out.println("Usuario eliminado exitosamente");
     }
 
     @FXML
     void modificarConductor(ActionEvent event) {
+        String auxLicencia="";
+
+        if(c1Selected.isSelected()){
+            auxLicencia = "C1";
+        }else if(c2Selected.isSelected()){
+            auxLicencia = "C2";
+        }else if(b3Selected.isSelected()){
+            auxLicencia = "B3";
+        }
+        fco.modificarConductor(
+                Integer.parseInt(txtIDC.getText()),
+                Integer.parseInt(txtCedula.getText()),
+                txtNombre.getText(),
+                Integer.parseInt(txtCodigoLicencia.getText()),
+                auxLicencia,
+                0
+        );
+    }
+    @FXML
+    void ConsultarVehiculo(ActionEvent event) {
+    txtView.setText(fco.consultaView());
+    txtView.setEditable(false);
 
     }
+
+
+
 
 }
