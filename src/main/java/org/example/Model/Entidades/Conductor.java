@@ -70,4 +70,16 @@ public class Conductor {
     public void setPuntaje(int puntaje) {
         this.Puntaje = puntaje;
     }
+
+    @Override
+    public String toString() {
+        return
+                "\nidConductor=" + idConductor +
+                "\nCedula = " + Cedula +
+                "\nNombre = '" + Nombre + '\'' +
+                "\ncodigoLicencia = " + codigoLicencia +
+                "\ntipoLicencia = '" + tipoLicencia + '\'' +
+                "\nPuntaje = " + Puntaje+"\n"+
+                "-------------------------------";
+    }
 }

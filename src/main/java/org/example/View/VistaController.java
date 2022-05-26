@@ -2,12 +2,11 @@ package org.example.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.example.Controller.FachadaOCR;
+import org.example.Model.Entidades.Conductor;
+
+import java.util.List;
 
 public class VistaController {
 
@@ -85,6 +84,8 @@ public class VistaController {
 
     @FXML
     private Button Buttom_Ingr;
+    @FXML
+    private TextArea txtConsulta;
 
     @FXML
     private Button Buttom_modif;
@@ -93,10 +94,16 @@ public class VistaController {
     private Button Button_elim;
 
     @FXML
+    private Label txtCanti;
+
+    @FXML
+    private Label txtPromedio;
+
+    @FXML
     private Button Button_cons;
 
     @FXML
-    private ListView<?> ListViewConductor;
+    private ListView<Conductor> ListViewConductor;
 
     @FXML
     private RadioButton b3Selected;
@@ -130,6 +137,7 @@ public class VistaController {
     @FXML
     void agregarConductor(ActionEvent event) {
         String auxLicencia ="No licencia";
+
         FachadaOCR fco = new FachadaOCR();
         if(c1Selected.isSelected()){
             auxLicencia = "C1";
@@ -153,12 +161,27 @@ public class VistaController {
     }
     @FXML
     void consultarCondcutor(ActionEvent event) {
+        int suma=0;
+        FachadaOCR fco = new FachadaOCR();
+        String txtMostrar = "";
+        List<Conductor> listaConsultaC = fco.ConsultarConductores();
+        for(Conductor condu : listaConsultaC){
+            //System.out.println(condu.toString());
+            txtMostrar = txtMostrar + condu.toString();
+            suma = suma +  condu.getPuntaje();
+        }
+        txtConsulta.setText(txtMostrar);
+        txtCanti.setText(""+listaConsultaC.size());
+        int canti=+listaConsultaC.size();
+        txtPromedio.setText(""+(suma/canti));
+        txtConsulta.setEditable(false);
 
     }
 
     @FXML
     void eliminarConductor(ActionEvent event) {
-
+        FachadaOCR fco = new FachadaOCR();
+        fco.eliminarConductor(Integer.parseInt(txtIDC.getText()));
     }
 
     @FXML

@@ -33,11 +33,11 @@ public class FachadaOCR {
         
         queryModifyCon.ModificarConductor( Cedula, Nombre, codigoLicencia, tipoLicencia, Puntaje);
         System.out.println("Fue modificado exitosamente");
-    }
+    }*/
     public void  eliminarConductor(int idConductor){
 
         QuerysSITP2 queryDeleteCon = new QuerysSITP2();
         queryDeleteCon.deleteConductor(idConductor);
         System.out.println("Fue eliminado exitosamente");
-    }*/
+    }
 }

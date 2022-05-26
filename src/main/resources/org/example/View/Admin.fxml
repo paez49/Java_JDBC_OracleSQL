@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -314,7 +315,6 @@
                                                 <Insets left="170.0" />
                                             </GridPane.margin>
                                         </Button>
-                              <ListView fx:id="ListViewConductor" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="6" />
                               <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -333,6 +333,33 @@
                                     <RadioButton fx:id="c2Selected" mnemonicParsing="false" text="C2" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
+                              <TextArea fx:id="txtConsulta" prefHeight="317.0" prefWidth="596.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="Cantidad de conductores registrados:" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets bottom="250.0" left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Promedio puntaje conductores:" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="txtCanti" text=" " GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets bottom="150.0" left="50.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="42.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="txtPromedio" text=" " GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="42.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="50.0" top="100.0" />
+                                 </GridPane.margin>
+                              </Label>
                                     </children>
                                 </GridPane>
                             </children>
