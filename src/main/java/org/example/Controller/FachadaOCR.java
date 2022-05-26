@@ -20,27 +20,27 @@ public class FachadaOCR {
 
     public void añadirConductor(int idConductor, int Cedula, String Nombre, int codigoLicencia, String tipoLicencia, int Puntaje) {
         querysSITP2.InsertarConductor(idConductor, Cedula, Nombre, codigoLicencia, tipoLicencia, Puntaje);
-        System.out.println("Fue ingresado exitosamente");
+        //System.out.println("Fue ingresado exitosamente");
     }
 
     public void modificarConductor(int idConductor, int Cedula, String Nombre, int codigoLicencia, String tipoLicencia, int Puntaje) {
         querysSITP2.ModificarConductor(idConductor, Cedula, Nombre, codigoLicencia, tipoLicencia, Puntaje);
-        System.out.println("Fue modificado exitosamente");
+        //System.out.println("Fue modificado exitosamente");
     }
 
     public void eliminarConductor(int idConductor) {
 
 
         querysSITP2.deleteConductor(idConductor);
-        System.out.println("Fue eliminado exitosamente");
+       // System.out.println("Fue eliminado exitosamente");
     }
 
     public String consultaView() {
-        System.out.println(querysSITP2.getView());
+        //System.out.println(querysSITP2.getView());
         return querysSITP2.getView();
     }
     public void insertarVehiculo(int idV, int idC, String text, String tipo, int codigoSoat){
     querysSITP2.insertVehiculo(idV, idC, text,tipo,codigoSoat);
-        System.out.println("Vehiculo ingresado exitosamente");
+        //System.out.println("Vehiculo ingresado exitosamente");
     }
 }

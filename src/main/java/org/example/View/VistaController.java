@@ -93,7 +93,8 @@ public class VistaController {
 
     @FXML
     private Button Buttom_modif;
-
+    @FXML
+    private Button btnLimpiar;
     @FXML
     private Button Button_elim;
 
@@ -200,7 +201,7 @@ public class VistaController {
                 Integer.parseInt(txtIDC.getText())
 
         );
-        System.out.println("Usuario eliminado exitosamente");
+        //System.out.println("Usuario eliminado exitosamente");
     }
 
     @FXML
@@ -228,6 +229,13 @@ public class VistaController {
     txtView.setText(fco.consultaView());
     txtView.setEditable(false);
 
+    }
+    @FXML
+    void actionLimpiar(ActionEvent event) {
+    txtIDC.setText("");
+    txtCedula.setText("");
+    txtNombre.setText("");
+    txtCodigoLicencia.setText("");
     }
 
 
