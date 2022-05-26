@@ -31,6 +31,8 @@ public class QuerysSITP2 {
     private PreparedStatement deleteConductor;
     private PreparedStatement deleteVehiculo;
 
+    private PreparedStatement queryView;
+
     // constructor
     public QuerysSITP2() {
         try {
@@ -45,13 +47,13 @@ public class QuerysSITP2 {
 
             // Selecciona todos los vehiculos
             selectAllVehiculo = connection.prepareStatement(
-                    "SELECT * FROM Vehiculo "
-                            + "ORDER BY IdVehiculo, Placa");
+                    "SELECT * FROM Vehiculos "
+                            + "ORDER BY IdVehiculos, Placa");
 
             // Selecciona vehiculos por placa
             selectVehiculoPlaca = connection.prepareStatement(
-                    "SELECT * FROM Vehiculo WHERE Placa LIKE ? " +
-                            "ORDER BY IdVehiculo, Placa");
+                    "SELECT * FROM Vehiculos WHERE Placa LIKE ? " +
+                            "ORDER BY IdVehiculos, Placa");
 
             // Selecciona conductores por cedula
             selectConductorCedula = connection.prepareStatement(
@@ -66,8 +68,8 @@ public class QuerysSITP2 {
 
             // insertar nuevo vehiculo
             insertNewVehiculo = connection.prepareStatement(
-                    "INSERT INTO Vehiculo " +
-                            "(IdVehiculo,IdConductor ,Placa,Tipo,codigoSoat) " +
+                    "INSERT INTO Vehiculos " +
+                            "(IdVehiculos,conductoridconductor ,Placa,Tipo,codigoSoat) " +
                             "VALUES (?, ?, ?, ?, ?)");
 
             // actualizar conductor
@@ -79,9 +81,9 @@ public class QuerysSITP2 {
 
             // actualizar vehiculo
             updateVehiculo = connection.prepareStatement(
-                    "UPDATE Vehiculo " +
+                    "UPDATE Vehiculos " +
                             "SET IdConductor = ?, Placa = ?, Tipo = ? , codigoSoat = ? " +
-                            "WHERE IdVehiculo = ?");
+                            "WHERE IdVehiculos = ?");
 
             // eliminar conductor
             deleteConductor = connection.prepareStatement(
@@ -89,7 +91,9 @@ public class QuerysSITP2 {
 
             // eliminar vehiculo
             deleteVehiculo = connection.prepareStatement(
-                    "DELETE FROM Vehiculo WHERE IdVehiculo = ?");
+                    "DELETE FROM Vehiculos WHERE IdVehiculos = ?");
+            queryView = connection.prepareStatement(
+                    "select * from conductor_vehiculo");
 
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
@@ -97,6 +101,21 @@ public class QuerysSITP2 {
         }
     }
 
+    public int insertVehiculo(int idVehiculo, int idConductor, String Placa, String tipo,int codigoSoat){
+        try {
+            // set parameters
+            insertNewVehiculo.setInt(1, idVehiculo);
+            insertNewVehiculo.setInt(2, idConductor);
+            insertNewVehiculo.setString(3, Placa);
+            insertNewVehiculo.setString(4, tipo);
+            insertNewVehiculo.setInt(5, codigoSoat);
+
+             return insertNewVehiculo.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return 0;
+        }
+    }
     // selecciona todos los conductores
     public List<Conductor> getAllConductor() {
         // executeQuery returns ResultSet containing matching entries
@@ -122,6 +141,25 @@ public class QuerysSITP2 {
     }
 
     // selecciona todos los vehiculos
+    public String getView(){
+        String resultadoVista="",aux="";
+        try (ResultSet resultSet = queryView.executeQuery()) {
+            while (resultSet.next()) {
+                         resultadoVista =  resultadoVista  +
+                        "ID Conductor: "+resultSet.getInt("IdConductor") +"\n"+
+                        "Nombre: "+resultSet.getString("Nombre") +"\n"+
+                        "ID Vehiculos: "+resultSet.getInt("IdVehiculos") +"\n"+
+                        "Placa: "+resultSet.getString("Placa") +"\n"+
+                        "Tipo: "+resultSet.getString("Tipo") +"\n"+
+                        resultSet.getInt("codigoSoat")+ "\n---------------\n";
+            }
+
+            return resultadoVista;
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return "";
+    }
     public List<Vehiculo> getAllVehiculo() {
         // executeQuery returns ResultSet containing matching entries
         try (ResultSet resultSet = selectAllVehiculo.executeQuery()) {

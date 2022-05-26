@@ -2,15 +2,14 @@ package org.example.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.example.Controller.FachadaOCR;
+import org.example.Model.Entidades.Conductor;
+
+import java.util.List;
 
 public class VistaController {
-
+    FachadaOCR fco = new FachadaOCR();
     @FXML
     private Tab Tab_vehiculo;
 
@@ -60,13 +59,19 @@ public class VistaController {
     private Button Buttom_Modificar;
 
     @FXML
-    private Button Buttom_Eliminar;
+    private Button btnConsultar;
 
     @FXML
     private RadioButton motorizadoSelected;
 
     @FXML
     private RadioButton noMotorizadoSelected;
+
+    @FXML
+    private TextArea txtView;
+
+    @FXML
+    private Label lblView;
 
     @FXML
     private Tab Tab_Conductor;
@@ -88,15 +93,13 @@ public class VistaController {
 
     @FXML
     private Button Buttom_modif;
-
+    @FXML
+    private Button btnLimpiar;
     @FXML
     private Button Button_elim;
 
     @FXML
     private Button Button_cons;
-
-    @FXML
-    private ListView<?> ListViewConductor;
 
     @FXML
     private RadioButton b3Selected;
@@ -108,8 +111,31 @@ public class VistaController {
     private RadioButton c2Selected;
 
     @FXML
-    void AgregarVehiculo(ActionEvent event) {
+    private TextArea txtConsulta;
 
+    @FXML
+    private Label txtCanti;
+
+    @FXML
+    private Label txtPromedio;
+
+
+    @FXML
+    void AgregarVehiculo(ActionEvent event) {
+        String tipo ="";
+        if(motorizadoSelected.isSelected()){
+            tipo= "motorizado";
+        }else if(noMotorizadoSelected.isSelected()){
+            tipo= "no motorizado";
+        }
+
+    fco.insertarVehiculo(
+            Integer.parseInt(txtIDV.getText()),
+            -1,
+            txtPlaca.getText(),
+            tipo,
+            Integer.parseInt(txtCodigo.getText())
+    );
     }
 
     @FXML
@@ -130,7 +156,7 @@ public class VistaController {
     @FXML
     void agregarConductor(ActionEvent event) {
         String auxLicencia ="No licencia";
-        FachadaOCR fco = new FachadaOCR();
+
         if(c1Selected.isSelected()){
             auxLicencia = "C1";
         }else if(c2Selected.isSelected()){
@@ -153,17 +179,66 @@ public class VistaController {
     }
     @FXML
     void consultarCondcutor(ActionEvent event) {
+        int suma=0;
+        String txtMostrar = "";
+        List<Conductor> listaConsultaC = fco.ConsultarConductores();
+        for(Conductor condu : listaConsultaC){
+            //System.out.println(condu.toString());
+            txtMostrar = txtMostrar + condu.toString();
+            suma = suma +  condu.getPuntaje();
+        }
+        txtConsulta.setText(txtMostrar);
+        txtCanti.setText(""+listaConsultaC.size());
+        int canti=+listaConsultaC.size();
+        txtPromedio.setText(""+(suma/canti));
+        txtConsulta.setEditable(false);
 
     }
 
     @FXML
     void eliminarConductor(ActionEvent event) {
+        fco.eliminarConductor(
+                Integer.parseInt(txtIDC.getText())
 
+        );
+        //System.out.println("Usuario eliminado exitosamente");
     }
 
     @FXML
     void modificarConductor(ActionEvent event) {
+        String auxLicencia="";
+
+        if(c1Selected.isSelected()){
+            auxLicencia = "C1";
+        }else if(c2Selected.isSelected()){
+            auxLicencia = "C2";
+        }else if(b3Selected.isSelected()){
+            auxLicencia = "B3";
+        }
+        fco.modificarConductor(
+                Integer.parseInt(txtIDC.getText()),
+                Integer.parseInt(txtCedula.getText()),
+                txtNombre.getText(),
+                Integer.parseInt(txtCodigoLicencia.getText()),
+                auxLicencia,
+                0
+        );
+    }
+    @FXML
+    void ConsultarVehiculo(ActionEvent event) {
+    txtView.setText(fco.consultaView());
+    txtView.setEditable(false);
 
     }
+    @FXML
+    void actionLimpiar(ActionEvent event) {
+    txtIDC.setText("");
+    txtCedula.setText("");
+    txtNombre.setText("");
+    txtCodigoLicencia.setText("");
+    }
+
+
+
 
 }
