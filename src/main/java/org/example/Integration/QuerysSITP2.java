@@ -69,7 +69,7 @@ public class QuerysSITP2 {
             // insertar nuevo vehiculo
             insertNewVehiculo = connection.prepareStatement(
                     "INSERT INTO Vehiculos " +
-                            "(IdVehiculos,IdConductor ,Placa,Tipo,codigoSoat) " +
+                            "(IdVehiculos,conductoridconductor ,Placa,Tipo,codigoSoat) " +
                             "VALUES (?, ?, ?, ?, ?)");
 
             // actualizar conductor
@@ -101,6 +101,21 @@ public class QuerysSITP2 {
         }
     }
 
+    public int insertVehiculo(int idVehiculo, int idConductor, String Placa, String tipo,int codigoSoat){
+        try {
+            // set parameters
+            insertNewVehiculo.setInt(1, idVehiculo);
+            insertNewVehiculo.setInt(2, idConductor);
+            insertNewVehiculo.setString(3, Placa);
+            insertNewVehiculo.setString(4, tipo);
+            insertNewVehiculo.setInt(5, codigoSoat);
+
+             return insertNewVehiculo.executeUpdate();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return 0;
+        }
+    }
     // selecciona todos los conductores
     public List<Conductor> getAllConductor() {
         // executeQuery returns ResultSet containing matching entries

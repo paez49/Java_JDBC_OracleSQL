@@ -119,11 +119,22 @@ public class VistaController {
     private Label txtPromedio;
 
 
-
-
     @FXML
     void AgregarVehiculo(ActionEvent event) {
+        String tipo ="";
+        if(motorizadoSelected.isSelected()){
+            tipo= "motorizado";
+        }else if(noMotorizadoSelected.isSelected()){
+            tipo= "no motorizado";
+        }
 
+    fco.insertarVehiculo(
+            Integer.parseInt(txtIDV.getText()),
+            -1,
+            txtPlaca.getText(),
+            tipo,
+            Integer.parseInt(txtCodigo.getText())
+    );
     }
 
     @FXML
