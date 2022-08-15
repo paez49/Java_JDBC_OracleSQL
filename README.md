@@ -2,12 +2,8 @@
 Proyecto para la entrega de bases de datos.
 
 * Equipo interfaz grafica:
-   * Carlos D'Silvestri
-   * Nicolle Camargo
+   * Juan Páez
 * Equipo base de datos (Statements y tablas)
-   * Santiago Guerrero
-   * Maikol Vergara
+   * Juan Páez
 * Equipo backend:
-  * Daniel Garzón
-  * Laura
   * Juan Páez
